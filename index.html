@@ -1,51 +1,897 @@
-
-<html>
+```html
+<!DOCTYPE html>
+<html lang="id">
 <head>
-<title>Mawan.my.id - Sekolahku</title>
-<link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<link rel="stylesheet" href="../style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rizki Aul | Website Pribadi</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================
+           RESET
+        ========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f8ff;
+            color: #172033;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 3px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        nav {
+            max-width: 1150px;
+            margin: auto;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 25px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #175cff;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #172033;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #172033;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #175cff;
+        }
+
+        /* Hamburger */
+        .menu-btn {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           GENERAL SECTION
+        ========================= */
+        section {
+            min-height: 100vh;
+            padding: 110px 25px 70px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            color: #172033;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #687386;
+        }
+
+        /* =========================
+           BERANDA
+        ========================= */
+        #beranda {
+            display: flex;
+            align-items: center;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(23, 92, 255, 0.12), transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(23, 92, 255, 0.10), transparent 30%),
+                #f5f8ff;
+        }
+
+        .hero {
+            max-width: 1100px;
+            width: 100%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text .small-text {
+            color: #175cff;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(45px, 7vw, 75px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #172033;
+        }
+
+        .hero-text h1 span {
+            color: #175cff;
+        }
+
+        .hero-text p {
+            color: #687386;
+            font-size: 17px;
+            line-height: 1.8;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #175cff;
+            color: white;
+            box-shadow: 0 8px 25px rgba(23, 92, 255, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(23, 92, 255, 0.35);
+        }
+
+        .btn-outline {
+            border: 2px solid #175cff;
+            color: #175cff;
+        }
+
+        .btn-outline:hover {
+            background: #175cff;
+            color: white;
+        }
+
+        /* Hero Photo */
+        .hero-photo {
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #175cff, #78a2ff);
+            padding: 8px;
+            box-shadow: 0 20px 50px rgba(23, 92, 255, 0.2);
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        .hero-photo .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #687386;
+            padding: 30px;
+        }
+
+        .photo-placeholder span {
+            font-size: 70px;
+        }
+
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* =========================
+           TENTANG SAYA
+        ========================= */
+        #tentang {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-photo {
+            height: 430px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #175cff, #9ab8ff);
+            padding: 8px;
+            box-shadow: 0 20px 50px rgba(23, 92, 255, 0.15);
+        }
+
+        .about-photo-inner {
+            height: 100%;
+            border-radius: 20px;
+            background: #f5f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #687386;
+        }
+
+        .about-photo-inner span {
+            font-size: 90px;
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            color: #687386;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .info-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .info-item {
+            display: flex;
+            padding: 15px 18px;
+            background: #f5f8ff;
+            border-radius: 12px;
+            border-left: 4px solid #175cff;
+        }
+
+        .info-item strong {
+            width: 120px;
+        }
+
+        .info-item span {
+            color: #687386;
+        }
+
+        /* =========================
+           SEKOLAHKU
+        ========================= */
+        #sekolah {
+            background: #f5f8ff;
+        }
+
+        .school-card {
+            background: white;
+            border-radius: 25px;
+            padding: 45px;
+            box-shadow: 0 15px 45px rgba(23, 32, 51, 0.08);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .school-icon {
+            width: 110px;
+            height: 110px;
+            border-radius: 25px;
+            background: #175cff;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 55px;
+            margin-bottom: 25px;
+        }
+
+        .school-info h3 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .school-info p {
+            color: #687386;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .school-details {
+            display: grid;
+            gap: 15px;
+        }
+
+        .detail {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .detail-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: #e9efff;
+            color: #175cff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .detail-text small {
+            color: #8992a3;
+            display: block;
+        }
+
+        .detail-text strong {
+            font-size: 15px;
+        }
+
+        .school-photo {
+            height: 350px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #dce7ff, #f5f8ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #687386;
+            border: 2px dashed #a9bde8;
+        }
+
+        .school-photo span {
+            font-size: 80px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+        footer {
+            background: #172033;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            color: #b7bfce;
+            font-size: 14px;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* =========================
+           ANIMATION
+        ========================= */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+        @media (max-width: 800px) {
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: 0.4s;
+            }
+
+            .nav-links.active {
+                max-height: 300px;
+                padding: 15px 0;
+            }
+
+            .nav-links li {
+                padding: 15px;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 50px;
+            }
+
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-photo {
+                width: 260px;
+                height: 260px;
+            }
+
+            .about-content,
+            .school-card {
+                grid-template-columns: 1fr;
+            }
+
+            .about-photo {
+                height: 350px;
+            }
+
+            .school-card {
+                padding: 30px;
+            }
+
+            .school-photo {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+            .hero-text h1 {
+                font-size: 45px;
+            }
+
+            .info-item {
+                flex-direction: column;
+                gap: 3px;
+            }
+
+            .info-item strong {
+                width: auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <table width="800px" align="center" border="1">
-        <tr>
-            <td colspan="2" align="center" class="hero">
-                <h1>Website Mawan</h1>
-                <p><em>Di mana ada ke Mawan, di situ ada jalan.</em></p>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" class="nav">
-                <a href="../">Beranda</a>
-                <a href="../tentang-saya/">Tentang Saya</a>
-                <a href="../sekolah/">Sekolahku</a>
-                <a href="../lagu/">Syair Lagu</a>
-            </td>
-        </tr>
-        <tr>
-            <td width="75%" class="content">
-                <h3>Sekolahku</h3>
-                <p align="right"><small><em>Rabu, 9 September 2026</em></small></p>
-                <p>Di halaman ini para murid diinstruksikan untuk menjelaskan
-                sekolahnya, misalkan ekskulnya apa saja, kelebihannya apa saja,
-                hal-hal yang menarik dari sudut pandang dirinya sendiri tentang
-                sekolahnya, dan sebagainya.</p>
-                <p>Tambahkan juga foto-foto agar lebih menarik.</p>
-            </td>
-            <td width="25%" valign="top" class="sidebar">
-                <p>Tautan eksternal</p>
-                <ol>
-                    <li><a href="https://www.mawan.or.id">Website Mawan</a></li>
-                    <li><a href="https://www.github.com">Github</a></li>
-                    <li><a href="https://www.wikipedia.org">Wikipedia</a></li>
-                    <li><a href="https://www.w3schools.com">W3Schools</a></li>
-                </ol>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" align="right" class="footer">&copy; Copyright Mawan A. Nugroho, 2026.</td>
-        </tr>
-    </table>
-</body>
 
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+    <header>
+        <nav>
+            <a href="#beranda" class="logo">
+                RIZKI <span>AUL</span>
+            </a>
+
+            <div class="menu-btn" id="menuBtn">
+                ☰
+            </div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#tentang">Tentang Saya</a></li>
+                <li><a href="#sekolah">Sekolahku</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- =========================
+         BERANDA
+    ========================= -->
+    <section id="beranda">
+
+        <div class="hero">
+
+            <div class="hero-text fade-in">
+
+                <div class="small-text">
+                    👋 Halo, saya
+                </div>
+
+                <h1>
+                    Rizki <span>Aul</span>
+                </h1>
+
+                <p>
+                    Saya adalah siswa kelas XII di
+                    <strong>SMK PGRI 1 Kota Tangerang</strong>.
+                    Selamat datang di website pribadi saya.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#tentang" class="btn btn-primary">
+                        Tentang Saya
+                    </a>
+
+                    <a href="#sekolah" class="btn btn-outline">
+                        Sekolahku
+                    </a>
+                </div>
+
+            </div>
+
+
+            <div class="hero-photo fade-in">
+
+                <div class="photo-placeholder">
+
+                    <div>
+                        <span>👤</span>
+
+                        <p>
+                            Foto Rizki Aul
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         TENTANG SAYA
+    ========================= -->
+    <section id="tentang">
+
+        <div class="container">
+
+            <div class="section-title fade-in">
+
+                <h2>Tentang Saya</h2>
+
+                <p>
+                    Kenali saya lebih dekat
+                </p>
+
+            </div>
+
+
+            <div class="about-content">
+
+                <div class="about-photo fade-in">
+
+                    <div class="about-photo-inner">
+
+                        <div>
+                            <span>👤</span>
+
+                            <p>
+                                Tempat Foto Profil
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="about-text fade-in">
+
+                    <h3>Rizki Aul</h3>
+
+                    <p>
+                        Halo! Nama saya <strong>Rizki Aul</strong>.
+                        Saya merupakan seorang siswa kelas XII
+                        di SMK PGRI 1 Kota Tangerang.
+                        Website ini dibuat sebagai halaman pribadi
+                        untuk memperkenalkan diri dan sekolah saya.
+                    </p>
+
+
+                    <div class="info-list">
+
+                        <div class="info-item">
+                            <strong>Nama</strong>
+                            <span>Rizki Aul</span>
+                        </div>
+
+                        <div class="info-item">
+                            <strong>Status</strong>
+                            <span>Siswa</span>
+                        </div>
+
+                        <div class="info-item">
+                            <strong>Kelas</strong>
+                            <span>XII</span>
+                        </div>
+
+                        <div class="info-item">
+                            <strong>Sekolah</strong>
+                            <span>SMK PGRI 1 Kota Tangerang</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SEKOLAHKU
+    ========================= -->
+    <section id="sekolah">
+
+        <div class="container">
+
+            <div class="section-title fade-in">
+
+                <h2>Sekolahku</h2>
+
+                <p>
+                    Tempat saya menuntut ilmu
+                </p>
+
+            </div>
+
+
+            <div class="school-card fade-in">
+
+                <div class="school-info">
+
+                    <div class="school-icon">
+                        🏫
+                    </div>
+
+                    <h3>
+                        SMK PGRI 1 Kota Tangerang
+                    </h3>
+
+                    <p>
+                        SMK PGRI 1 Kota Tangerang merupakan
+                        sekolah tempat saya belajar, berkembang,
+                        dan mempersiapkan diri untuk masa depan.
+                        Saat ini saya merupakan siswa kelas XII.
+                    </p>
+
+
+                    <div class="school-details">
+
+                        <div class="detail">
+
+                            <div class="detail-icon">
+                                🏫
+                            </div>
+
+                            <div class="detail-text">
+
+                                <small>Nama Sekolah</small>
+
+                                <strong>
+                                    SMK PGRI 1 Kota Tangerang
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <div class="detail-icon">
+                                🎓
+                            </div>
+
+                            <div class="detail-text">
+
+                                <small>Kelas</small>
+
+                                <strong>
+                                    XII
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <div class="detail-icon">
+                                📍
+                            </div>
+
+                            <div class="detail-text">
+
+                                <small>Kota</small>
+
+                                <strong>
+                                    Tangerang
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="school-photo">
+
+                    <div>
+
+                        <span>🏫</span>
+
+                        <p>
+                            Tempat Foto Sekolah
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+    <footer>
+
+        <p>
+            © 2026 <strong>Rizki Aul</strong>.
+            Website Pribadi.
+        </p>
+
+        <p>
+            Siswa SMK PGRI 1 Kota Tangerang
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+    <script>
+
+        // Menu hamburger
+        const menuBtn = document.getElementById("menuBtn");
+        const navLinks = document.getElementById("navLinks");
+
+        menuBtn.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+        });
+
+
+        // Menutup menu setelah memilih navigasi
+        document.querySelectorAll(".nav-links a").forEach(link => {
+
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("active");
+            });
+
+        });
+
+
+        // Animasi ketika section terlihat
+        const fadeElements = document.querySelectorAll(".fade-in");
+
+        const observer = new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("show");
+
+                    }
+
+                });
+
+            },
+
+            {
+                threshold: 0.15
+            }
+
+        );
+
+
+        fadeElements.forEach(element => {
+
+            observer.observe(element);
+
+        });
+
+    </script>
+
+</body>
 </html>
+```
